@@ -25,7 +25,7 @@ public class driver {
         Player player = new Player();
         String ans = "";
         while (!ans.equalsIgnoreCase("x")) {
-            ans = Printer.prompt("Actions:\n[Aa]|Adventure\n[Bb]|Buy\n[Ee]|Items.Equipment\n[Xx]|X-IT");
+            ans = Printer.prompt("Actions:\n[Aa]|Adventure\n[Bb]|Buy\n[Ee]|Equipment\n[Xx]|X-IT");
             switch (ans.toLowerCase()) {
                 case ("a"):
                     ans = "";

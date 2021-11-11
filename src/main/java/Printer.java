@@ -31,15 +31,15 @@ class Printer {
         while (!ans.equalsIgnoreCase("x")) {
 
             String equips = "==============================================================\n" +
-                    "    |Welcome to the Items.Equipment screen!\n" +
+                    "    |Welcome to the Equipment screen!\n" +
                     "    |Here you can equip and unequip stuff.\n" +
                     "    |\n" +
                     "[Aa]|Amulets\n" +
-                    "[Bb]|Items.Body Armor\n" +
-                    "[Dd]|Items.Boots\n" +
-                    "[Gg]|Items.Gloves\n" +
-                    "[Hh]|Items.Helm\n" +
-                    "[Ll]|Items.Legs\n" +
+                    "[Bb]|Body Armor\n" +
+                    "[Dd]|Boots\n" +
+                    "[Gg]|Gloves\n" +
+                    "[Hh]|Helm\n" +
+                    "[Ll]|Legs\n" +
                     "[Tt]|TrinketsLH\n" +
                     "[Rr]|TrinketsRH\n" +
                     "    |\n" +
@@ -189,14 +189,19 @@ class Printer {
         ArrayList<String> items = cg.getItems(x, y);
 
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-        items.forEach(System.out::println);
-        String ans = prompt(String.format("\n>>>Would you like to take any items?\n[0..%s, Aa, Xx]", items.size() - 1));
+        items.forEach(item -> System.out.printf("[%s] %s\n", items.indexOf(item),item));
+
+        String itemPrompt = String.format("\n>>>Would you like to take any items?\n%s, Aa, Xx]", items.size() > 1 ? "[0..%s" :"[0" );
+        String ans = prompt(String.format(itemPrompt, items.size() - 1));
 
         try {
             if (ans.equals("a")) {
+                System.out.print("You grabbed the contents from the item bag");
                 cg.setLocationOnMap(x, y, PLAYER_CHAR);
                 cg.removeAllItemsFromItemBag(x, y);
+
             } else if (Integer.parseInt(ans) > -1 && Integer.parseInt(ans) < items.size()) {
+                System.out.printf("You grabbed a %s",items.get(Integer.parseInt(ans)));
                 if (cg.getItems(x, y).size() == 1) {
                     cg.setLocationOnMap(x, y, PLAYER_CHAR);
                     cg.removeAllItemsFromItemBag(x, y);
