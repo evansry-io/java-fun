@@ -1,0 +1,12 @@
+[
+  {
+    "material": "Stone",
+    "slot": "Amulet",
+    "name": "Stone Amulet",
+    "level": "1",
+    "rarity": "1",
+    "durability": "1",
+    "magic": "magic",
+    "traits": []
+  }
+]

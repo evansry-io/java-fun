@@ -1,0 +1,12 @@
+[
+  {
+    "material": "Cloth",
+    "slot": "Body",
+    "name": "Cloth Rags",
+    "level": "1",
+    "rarity": "1",
+    "durability": "1",
+    "weightMod": "1",
+    "traits": []
+  }
+]

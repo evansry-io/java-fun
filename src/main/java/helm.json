@@ -1,0 +1,12 @@
+[
+  {
+    "material": "Cloth",
+    "slot": "Helm",
+    "name": "Cloth Helm",
+    "level": "1",
+    "rarity": "1",
+    "durability": "1",
+    "sightMod": "1",
+    "traits": []
+  }
+]

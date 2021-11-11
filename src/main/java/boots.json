@@ -1,0 +1,12 @@
+[
+  {
+    "material": "Cloth",
+    "slot": "Boots",
+    "name": "Cloth Boots",
+    "level": "1",
+    "rarity": "1",
+    "durability": "1",
+    "speedMod": "1",
+    "traits": []
+  }
+]
