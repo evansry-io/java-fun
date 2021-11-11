@@ -1,3 +1,5 @@
+package Items;
+
 public class Amulet extends Item {
 
     public Amulet(){

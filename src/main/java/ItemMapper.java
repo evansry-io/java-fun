@@ -1,3 +1,4 @@
+import Items.Item;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.simple.JSONArray;
@@ -38,7 +39,7 @@ public class ItemMapper {
 
     private Object[] parseFile(String itemType) throws IOException, ParseException {
         JSONParser parser = new JSONParser();
-        JSONArray data = (JSONArray) parser.parse(new FileReader(String.format("src/main/java/Items/Descriptions/%s.json", itemType)));
+        JSONArray data = (JSONArray) parser.parse(new FileReader(String.format("src/main/java/Items/%s.json", itemType)));
         Object[] objects = data.toArray();
         return objects;
     }

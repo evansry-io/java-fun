@@ -10,14 +10,14 @@ public class driver {
 
 
     public static void gameLoop() throws IOException, ParseException, ClassNotFoundException {
-        String ans = printer.prompt("Start game?(Yy/Nn)");
+        String ans = Printer.prompt("Start game?(Yy/Nn)");
         switch (ans.toLowerCase()) {
             case ("y"):
                 openMenu();
             case ("n"):
                 break;
         }
-        printer.loadEndScreen();
+        Printer.loadEndScreen();
     }
 
 
@@ -25,20 +25,20 @@ public class driver {
         Player player = new Player();
         String ans = "";
         while (!ans.equalsIgnoreCase("x")) {
-            ans = printer.prompt("Actions:\n[Aa]|Adventure\n[Bb]|Buy\n[Ee]|Items.Equipment\n[Xx]|X-IT");
+            ans = Printer.prompt("Actions:\n[Aa]|Adventure\n[Bb]|Buy\n[Ee]|Items.Equipment\n[Xx]|X-IT");
             switch (ans.toLowerCase()) {
                 case ("a"):
                     ans = "";
                     CaveGenerator cg = new CaveGenerator();
-                    player = printer.loadAdventureScreen(cg, player);
-                    printer.interact(cg, player);
+                    player = Printer.loadAdventureScreen(cg, player);
+                    Printer.interact(cg, player);
                     break;
                 case ("b"):
 //                loadBuyScreen();
                     break;
                 case ("e"):
                     ans = "";
-                    printer.loadEquipScreen();
+                    Printer.loadEquipScreen();
                     break;
             }
         }

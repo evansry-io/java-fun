@@ -1,5 +1,6 @@
-public class Legs extends Item {
+package Items;
 
+public class Gloves extends Item {
     private int speedMod;
 
     public int getSpeedMod() {

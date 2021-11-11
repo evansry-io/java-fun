@@ -1,3 +1,4 @@
+import Items.*;
 
 public class Equipment {
 

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class CaveGenerator {
     public static final char MAPTILE_CHAR = '.';
@@ -8,6 +9,7 @@ public class CaveGenerator {
     private char[][] map;
     private int[][] fogOfWar;
     private int[][] itemBags;
+    private ArrayList<ArrayList<String>> itemBagItems;
 //    private ArrayList<ItemBag> itemBags;
     private ArrayList<Location> rooms;
 
@@ -16,6 +18,10 @@ public class CaveGenerator {
         generateNumberOfRooms(4, 4, 16, 5, 8);
         connectRooms(false);
 //        printMap();
+        itemBagItems = new ArrayList<ArrayList<String>>();
+        for(int i= 0; i<20; i++) {
+            itemBagItems.add(i, new ArrayList<>(List.of(new String[]{"Gold(10)", "Cloth Boots", "Stone Amulet", "Potion of Healing"})));
+        }
     }
 
     private void init() {
@@ -41,18 +47,45 @@ public class CaveGenerator {
     }
 
     public boolean playerCanMoveTo(int x, int y) {
-        return map[x][y] != ' ';
+        return x > 0 && x < ht && y > 0 && y < wd && map[x][y] != ' ';
+    }
+
+    public boolean hasItems(int x, int y){
+        return itemBags[x][y] == 1;
+    }
+
+    public ArrayList<String> getItems(int x, int y){
+        int i=0;
+        while(itemBagItems.get(i).isEmpty()){
+            i++;
+        }
+        return itemBagItems.get(i);
+    }
+    public void removeItemFromItemBag(int index, int x, int y){
+        int i=0;
+        while(itemBagItems.get(i).isEmpty()){
+            i++;
+        }
+        itemBagItems.get(i).remove(index);
+    }
+    public void removeAllItemsFromItemBag(int x, int y){
+        int i=0;
+        while(itemBagItems.get(i).isEmpty()){
+            i++;
+        }
+        itemBagItems.get(i).clear();
+        itemBags[x][y]=0;
     }
 
     public void printMap(Player p) {
 
-        itemBags[p.getX()][p.getY()+1] = 1;
+//        itemBags[p.getX()][p.getY()+1] = 1;
         setFogOfWar(p.getLocation());
         for (int i = 0; i < ht; i++) {
             for (int j = 0; j < wd; j++) {
-//                if(itemBags[i][j] == 1){
-//                    map[i][j] = ITEMBAG_CHAR;
-//                }
+                if(map[i][j] != '@' && itemBags[i][j] == 1){
+                    map[i][j] = ITEMBAG_CHAR;
+                }
 
                 if (fogOfWar[i][j] == 1) {
                     System.out.print(map[i][j]);
@@ -106,6 +139,7 @@ public class CaveGenerator {
                 for (int i = x; i < rht + x; i++) {
                     for (int j = y; j < rwd + y; j++) {
                         map[i][j] = MAPTILE_CHAR;
+                        itemBags[i][j] = (Math.random()*100>=95) ?  1 : 0;
                     }
                 }
                 rooms.add(new Location(x, y, rht, rwd));

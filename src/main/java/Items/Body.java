@@ -1,3 +1,5 @@
+package Items;
+
 public class Body extends Item {
     private int weightMod;
 

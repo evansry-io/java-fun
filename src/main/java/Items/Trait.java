@@ -1,3 +1,5 @@
+package Items;
+
 public interface Trait {
 
     String effect = "";

@@ -1,3 +1,5 @@
+package Items;
+
 public class Item {
 
     String slot;
@@ -6,7 +8,7 @@ public class Item {
     int level;
     double rarity;
     int durability;
-//    Trait[] traits = new Trait[0];
+    Items.Trait[] traits = new Items.Trait[1];
 
 
     public String getSlot() {
@@ -55,13 +57,13 @@ public class Item {
         this.durability = durability;
     }
 
-//    public Trait[] getTraits() {
-//        return traits;
-//    }
-//
-//    public void setTraits(Trait[] traits) {
-//        this.traits = traits;
-//    }
+    public Items.Trait[] getTraits() {
+        return traits;
+    }
+
+    public void setTraits(Items.Trait[] traits) {
+        this.traits = traits;
+    }
 
 
     @Override

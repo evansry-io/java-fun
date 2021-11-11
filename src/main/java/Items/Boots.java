@@ -1,3 +1,5 @@
+package Items;
+
 public class Boots extends Item {
     private int speedMod;
 
